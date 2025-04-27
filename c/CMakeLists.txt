@@ -1,13 +1,5 @@
 
-# Specify the minimum version of CMake
 cmake_minimum_required(VERSION 3.20)
-
-# Set the Pico SDK path (adjust if needed)
-# set(PICO_SDK_PATH "$ENV{HOME}/github/pico-sdk")
-# set(PICO_BOARD "pico") # before pico_sdk_import.cmake, pico, pico2, pico_w
-
-# Include the Pico SDK
-# include(${PICO_SDK_PATH}/external/pico_sdk_import.cmake)
 
 # Set project name and language
 project(gci_gps C)
@@ -28,8 +20,6 @@ if(PROJECT_IS_TOP_LEVEL)
 
   message(STATUS "-------------------------------------")
   message(STATUS "  Project: ${PROJECT_NAME}")
-  # message(STATUS "  Hardware: ${PICO_BOARD}")
-  message(STATUS "  C++ ${CMAKE_CXX_STANDARD}")
   message(STATUS "  C ${CMAKE_C_STANDARD}")
   message(STATUS "-------------------------------------")
   message(STATUS " ${HOST}")
@@ -38,20 +28,12 @@ if(PROJECT_IS_TOP_LEVEL)
   message(STATUS "-------------------------------------")
 
   set(BUILD_EXAMPLES ON)
+  set(BUILD_TESTS ON)
 else()
   message(STATUS "-> ${PROJECT_NAME} is submodule")
   set(BUILD_EXAMPLES OFF)
+  set(BUILD_TESTS OFF)
 endif()
-
-# Initialize the Pico SDK
-# pico_sdk_init()
-
-# LIST(APPEND pico_libs
-#   pico_stdlib
-#   # hardware_i2c
-# )
-
-# add_subdirectory(extlib/gci_pico)
 
 add_library(${PROJECT_NAME}
   ../src/gga.c
@@ -61,13 +43,11 @@ add_library(${PROJECT_NAME}
   ../src/checksum.c
 )
 target_include_directories(${PROJECT_NAME} PUBLIC ../src)
-# target_link_libraries(${PROJECT_NAME} PUBLIC ${pico_libs})
-
-
-# pico_enable_stdio_usb(${PROJECT_NAME} 1)
-# pico_enable_stdio_uart(${PROJECT_NAME} 0)
-
 
 if (BUILD_EXAMPLES)
   add_subdirectory(examples)
+endif()
+
+if (BUILD_TESTS)
+  add_subdirectory(scruffy)
 endif()
