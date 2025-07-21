@@ -1,8 +1,3 @@
-////////////////////////////////////////////////
-//  The MIT License (MIT)
-//  Copyright (c) 2023 Kevin Walchko
-//  see LICENSE for full details
-////////////////////////////////////////////////
 #pragma once
 
 #include <ctype.h>
@@ -69,6 +64,7 @@ typedef struct {
 } gga_t;
 
 int parse_gga(const char *gga_msg, gga_t *data);
+void print_gga(gga_t gga);
 
 // Define the struct to hold RMC data
 typedef struct {
@@ -87,6 +83,7 @@ typedef struct {
 
 // Function to parse an RMC message
 int parse_rmc(const char *rmc_msg, rmc_t *data);
+void print_rmc(rmc_t rmc);
 
 // Define the struct to hold GSA data
 typedef struct {
@@ -100,6 +97,7 @@ typedef struct {
 
 // Function to parse a GSA message
 int parse_gsa(const char *gsa_msg, gsa_t *data);
+void print_gsa(gsa_t gsa);
 
 #if defined __cplusplus
 }

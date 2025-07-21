@@ -5,6 +5,8 @@ LIST(APPEND examples
     gps_time
     checksum
     position_error
+    ubx
+    multiple
 )
 
 foreach(app ${examples})

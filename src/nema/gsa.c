@@ -3,7 +3,7 @@
 //  Copyright (c) 2023 Kevin Walchko
 //  see LICENSE for full details
 ////////////////////////////////////////////////
-#include "gps.h"
+#include "nema.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -89,6 +89,20 @@ int parse_gsa(const char *gsa_msg, gsa_t *data) {
   }
 
   return 0; // Success
+}
+
+
+void print_gsa(gsa_t gsa) {
+  printf("GSA Sentence:\n");
+  printf("Mode: %c\n", gsa.mode);
+  printf("Fix Type: %d\n", gsa.fix_type);
+  printf("Satellites: ");
+  for (int i = 0; i < 12 && gsa.satellites[i]; i++) {
+      printf("%d ", gsa.satellites[i]);
+  }
+  printf("\nPDOP: %.2f\n", gsa.pdop);
+  printf("HDOP: %.2f\n", gsa.hdop);
+  printf("VDOP: %.2f\n", gsa.vdop);
 }
 
 // // Function to parse a GSA message

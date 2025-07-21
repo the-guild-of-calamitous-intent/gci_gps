@@ -1,5 +1,5 @@
+#include "gci_gps.h"
 #include <scruffy/scruffy.h>
-#include "gps.h"
 
 TEST(NMEATest, ParseGGA_ValidMessage) {
   gga_t gga_data;
@@ -19,7 +19,6 @@ TEST(NMEATest, ParseGGA_ValidMessage) {
   EXPECT_FLOAT_EQ(46.9f, gga_data.geoid_separation);
   EXPECT_EQ('M', gga_data.geoid_unit);
 }
-
 
 TEST(NMEATest, ParseGGA_EmptyFields) {
   gga_t gga_data;

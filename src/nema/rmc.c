@@ -3,9 +3,10 @@
 //  Copyright (c) 2023 Kevin Walchko
 //  see LICENSE for full details
 ////////////////////////////////////////////////
-#include "gps.h"
+#include "nema.h"
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 // Function to parse an RMC message manually
 int parse_rmc(const char *rmc_msg, rmc_t *data) {
@@ -108,6 +109,21 @@ int parse_rmc(const char *rmc_msg, rmc_t *data) {
 
   return 0; // Success
 }
+
+void print_rmc(rmc_t rmc) {
+  printf("RMC Sentence:\n");
+  printf("Time: %s\n", rmc.time);
+  printf("Status: %c\n", rmc.status);
+  printf("Latitude: %.6f %c\n", rmc.latitude, rmc.lat_dir);
+  printf("Longitude: %.6f %c\n", rmc.longitude, rmc.lon_dir);
+  printf("Speed: %.2f knots\n", rmc.speed);
+  printf("Course: %.2f degrees\n", rmc.course);
+  printf("Date: %s\n", rmc.date);
+  printf("Magnetic Var: %f %c\n", rmc.mag_var, rmc.mag_var_dir);
+}
+
+
+
 
 // // Function to parse an RMC message
 // int parse_rmc(const char *rmc_msg, RMCData *data) {

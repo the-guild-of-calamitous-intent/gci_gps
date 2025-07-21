@@ -38,8 +38,10 @@ if(PROJECT_IS_TOP_LEVEL)
   message(STATUS "-------------------------------------")
 
   set(BUILD_EXAMPLES ON)
+
+  add_subdirectory(extlibs/gci_pico)
 else()
-  message(STATUS "-> ${PROJECT_NAME} is submodule")
+  message(STATUS "-> Pico ${PROJECT_NAME} is submodule")
   set(BUILD_EXAMPLES OFF)
 endif()
 
@@ -48,17 +50,17 @@ pico_sdk_init()
 
 LIST(APPEND pico_libs
   pico_stdlib
+  hardware_uart
   # hardware_i2c
 )
 
-# add_subdirectory(extlib/gci_pico)
-
 add_library(${PROJECT_NAME}
-  ../src/gga.c
-  ../src/checksum.c
-  ../src/gps_time.c
-  ../src/gsa.c
-  ../src/rmc.c
+  ../src/nema/gga.c
+  ../src/nema/checksum.c
+  ../src/nema/gps_time.c
+  ../src/nema/gsa.c
+  ../src/nema/rmc.c
+  ../src/ublox/ubx_parser.c
 )
 target_include_directories(${PROJECT_NAME} PUBLIC ../src)
 target_link_libraries(${PROJECT_NAME} PUBLIC ${pico_libs})

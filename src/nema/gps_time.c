@@ -3,7 +3,7 @@
 //  Copyright (c) 2023 Kevin Walchko
 //  see LICENSE for full details
 ////////////////////////////////////////////////
-#include "gps.h"
+#include "nema.h"
 #include <stdlib.h>
 #include <string.h>
 

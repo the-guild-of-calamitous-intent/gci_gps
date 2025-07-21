@@ -3,7 +3,7 @@
 //  Copyright (c) 2023 Kevin Walchko
 //  see LICENSE for full details
 ////////////////////////////////////////////////
-#include "gps.h"
+#include "nema.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -110,6 +110,20 @@ int parse_gga(const char *gga_msg, gga_t *data) {
   }
 
   return 0; // Success
+}
+
+void print_gga(gga_t gga) {
+  // if (gga == NULL) return;
+  printf("GGA Sentence:\n");
+  printf("Time: %s\n", gga.time);
+  printf("Latitude: %.6f %c\n", gga.latitude, gga.lat_dir);
+  printf("Longitude: %.6f %c\n", gga.longitude, gga.lon_dir);
+  printf("Fix Quality: %d\n", gga.fix_quality);
+  printf("Satellites: %d\n", gga.satellites);
+  printf("HDOP: %.2f\n", gga.hdop);
+  printf("Altitude: %.2f %c\n", gga.altitude, gga.alt_unit);
+  printf("Geoid Separation: %f %c\n", gga.geoid_separation, gga.geoid_unit);
+
 }
 
 // // Function to parse a GGA message
