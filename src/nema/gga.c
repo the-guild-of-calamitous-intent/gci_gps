@@ -12,6 +12,7 @@
 int parse_gga(const char *gga_msg, gga_t *data) {
   // Check if the message starts with $GPGGA or $GNGGA
   if (strncmp(gga_msg, "$GPGGA", 6) != 0 && strncmp(gga_msg, "$GNGGA", 6) != 0) {
+  // if (strncmp(gga_msg, "$GPGGA", 6) == 0 || strncmp(gga_msg, "$GNGGA", 6) == 0) {
     return -1; // Invalid GGA message
   }
 

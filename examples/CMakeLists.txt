@@ -1,11 +1,11 @@
 LIST(APPEND examples
-    gga
-    rmc
-    gsa
-    gps_time
-    checksum
-    position_error
-    ubx
+    # gga
+    # rmc
+    # gsa
+    # gps_time
+    # checksum
+    # position_error
+    # ubx
     multiple
 )
 

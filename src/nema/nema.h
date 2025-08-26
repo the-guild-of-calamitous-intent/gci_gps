@@ -10,6 +10,8 @@
 extern "C" {
 #endif
 
+#include "mtk.h"
+
 // constexpr size_t MAX_NEMA_MSG_SIZE = 100;
 #define MAX_NEMA_MSG_SIZE 100
 

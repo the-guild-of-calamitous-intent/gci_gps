@@ -53,6 +53,7 @@ add_library(${PROJECT_NAME}
   src/nema/gps_time.c
   src/nema/checksum.c
   src/ublox/ubx_parser.c
+  src/gps.c
 )
 target_include_directories(${PROJECT_NAME} PUBLIC src)
 
